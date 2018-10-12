@@ -1,13 +1,11 @@
+const Model = require('../lib/Model');
+
 /**
  * User: Oleg Kamlowski <n@sovrin.de>
  * Date: 10.10.2018
  * Time: 22:58
  */
-export default class Avatar {
-
-    _description;
-    _file;
-    _title;
+class Avatar extends Model {
 
     /**
      *
@@ -16,6 +14,8 @@ export default class Avatar {
      * @param title
      */
     constructor(description, file, title) {
+        super();
+
         this._description = description;
         this._file = file;
         this._title = title;
@@ -80,3 +80,5 @@ export default class Avatar {
         this._title = value;
     }
 }
+
+module.exports = Avatar;

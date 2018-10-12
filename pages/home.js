@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import Button from '../components/Button';
 import Page from '../layouts/Main';
-import Model from '../lib/Model';
-
-import Member from '../models/Member';
-import Event from '../models/Event';
+import fetch from 'isomorphic-unfetch'
 
 /**
  * User: Oleg Kamlowski <n@sovrin.de>
@@ -15,21 +12,25 @@ export default class Home extends Component {
 
     /**
      *
+     * @returns {Promise<{data: any}>}
+     */
+    static async getInitialProps({req}) {
+        const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : '';
+        const res = await fetch(baseUrl + '/api/member');
+        const data = await res.json();
+
+        return {
+            data,
+        };
+    }
+
+    /**
+     *
      * @param props
      */
     constructor(props) {
         super(props);
 
-        const model = new Model();
-        const test = model.fetch()
-            // .then(wat => {
-            //         const t = wat.map(({}) => {
-            //             console.info(a);
-            //             // return Member.crea   te(fields);
-            //             return Event.create(fields);
-            //         });
-            //     },
-            // );
 
     }
 
@@ -38,9 +39,12 @@ export default class Home extends Component {
      * @returns {*}
      */
     render() {
+        const {data} = this.props;
+
         return (
             <Page>
                 <Button>test</Button>
+                <div className="test">{JSON.stringify(data)}</div>
             </Page>
         );
     }

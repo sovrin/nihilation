@@ -1,14 +1,11 @@
+const Model = require('../lib/Model');
+
 /**
  * User: Oleg Kamlowski <n@sovrin.de>
  * Date: 10.10.2018
  * Time: 23:16
  */
-export default class Location {
-
-    _city;
-    _country;
-    _loc;
-    _name;
+class Location extends Model {
 
     /**
      *
@@ -18,6 +15,8 @@ export default class Location {
      * @param name
      */
     constructor(city, country, loc, name) {
+        super();
+
         this._city = city;
         this._country = country;
         this._loc = loc;
@@ -100,3 +99,5 @@ export default class Location {
         this._name = value;
     }
 }
+
+module.exports = Location;

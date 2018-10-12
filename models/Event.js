@@ -1,16 +1,12 @@
-import Location from './Location';
+const Model = require('../lib/Model');
+const Location = require('./Location');
 
 /**
  * User: Oleg Kamlowski <n@sovrin.de>
  * Date: 10.10.2018
  * Time: 23:14
  */
-export default class Event {
-
-    _date;
-    _link;
-    _location;
-    _name;
+class Event extends Model {
 
     /**
      *
@@ -20,6 +16,8 @@ export default class Event {
      * @param name
      */
     constructor(date, link, location, name) {
+        super();
+
         this._date = date;
         this._link = link;
         this._location = (location.fields) ? Location.create(location.fields) : location;
@@ -102,3 +100,5 @@ export default class Event {
         this._name = value;
     }
 }
+
+module.exports = Event;

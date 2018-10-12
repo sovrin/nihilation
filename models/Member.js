@@ -1,16 +1,12 @@
-import Avatar from './Avatar';
+const Model = require('../lib/Model');
+const Avatar = require('./Avatar');
 
 /**
  * User: Oleg Kamlowski <n@sovrin.de>
  * Date: 10.10.2018
  * Time: 22:55
  */
-export default class Member {
-
-    _avatar;
-    _name;
-    _position;
-    _role;
+class Member extends Model {
 
     /**
      *
@@ -20,6 +16,8 @@ export default class Member {
      * @param role
      */
     constructor(avatar, name, position, role) {
+        super();
+
         this._avatar = (avatar.fields) ? Avatar.create(avatar.fields) : avatar;
         this._name = name;
         this._position = position;
@@ -102,3 +100,5 @@ export default class Member {
         this._role = value;
     }
 }
+
+module.exports = Member;

@@ -1,4 +1,4 @@
-import {createClient} from 'contentful';
+const {createClient} = require('contentful');
 
 const client = createClient({
     space: process.env.CMS_SPACE,
@@ -21,6 +21,6 @@ const getEntries = ({content_type}) => (
  * Date: 10.10.2018
  * Time: 21:50
  */
-export {
+module.exports = {
     getEntries,
 };

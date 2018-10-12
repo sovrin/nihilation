@@ -1,12 +1,11 @@
+const Model = require('../lib/Model');
+
 /**
  * User: Oleg Kamlowski <n@sovrin.de>
  * Date: 10.10.2018
  * Time: 23:01
  */
-export default class File {
-
-    _filename;
-    _url;
+class File extends Model {
 
     /**
      *
@@ -14,6 +13,8 @@ export default class File {
      * @param url
      */
     constructor(filename, url) {
+        super();
+
         this._filename = filename;
         this._url = url;
     }
@@ -60,3 +61,5 @@ export default class File {
         this._url = value;
     }
 }
+
+module.exports = File;
