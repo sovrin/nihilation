@@ -18,8 +18,8 @@ const getEntries = ({content_type}) => (
 
 /**
  * User: Oleg Kamlowski <n@sovrin.de>
- * Date: 10.10.2018
- * Time: 21:50
+ * Date: 23.10.2018
+ * Time: 00:04
  */
 module.exports = {
     getEntries,

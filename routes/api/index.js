@@ -1,10 +1,14 @@
 const {Router} = require('express');
 const router = Router();
-const cache = require('../../middlewares/cache');
+const {cacheable} = require('../../middlewares');
+const Models = require('../../models');
 
-router.use(cache({
-    '/member': 'member.json',
-}));
-router.use('/member', require('./member'));
+router.use('/:model', cacheable(Object.keys(Models)));
+router.use('/:model', (req, res, next) => {
+    const {locals: {data}} = res;
+    res.json(data);
+
+    next();
+});
 
 module.exports = router;

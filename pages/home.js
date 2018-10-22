@@ -15,8 +15,7 @@ export default class Home extends Component {
      * @returns {Promise<{data: any}>}
      */
     static async getInitialProps({req}) {
-        const baseUrl = req ? `${req.protocol}://${req.get('Host')}` : '';
-        const res = await fetch(baseUrl + '/api/member');
+        const res = await fetch(process.env.API_ENDPOINT + '/member');
         const data = await res.json();
 
         return {

@@ -9,14 +9,14 @@ const exists = promisify(access);
  * @param store
  * @returns {function(*): *}
  */
-const get = (store) => (key) => store[key] && deref(store[key]);
+const get = (store) => (key) => store[key];
 
 /**
  *
  * @param store
- * @returns {function(*, *=): *}
+ * @returns {function(*, *): *}
  */
-const set = (store) => (key, value) => store[key] = deref(value);
+const set = (store) => (key, value) => store[key] = value;
 
 /**
  *
@@ -54,18 +54,13 @@ const load = async (path) => {
 };
 
 /**
- *
- * @param data
- * @returns {any}
- */
-const deref = (data) => JSON.parse(JSON.stringify(data));
-
-/**
  * User: Oleg Kamlowski <n@sovrin.de>
  * Date: 12.10.2018
  * Time: 22:13
+ *
+ * @param path
+ * @returns {Promise<{get: (function(*): *), set: (function(*, *=): *), del: (function(*): boolean), save: (function(): function(*=): *)}>}
  */
-
 module.exports = async (path) => {
     const store = await load(path);
 
