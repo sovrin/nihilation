@@ -1,43 +1,57 @@
 const {resolve} = require('path');
+const {existsSync, mkdirSync} = require('fs');
 const {database, contentful: {getEntries}} = require('../services');
 
 /**
  *
  * @param whitelist
- * @param model
+ * @param entry
  * @param method
  * @returns {boolean}
  */
-const validate = (whitelist, model, method) => (
-    model && whitelist.includes(model) && method === 'GET'
+const validate = (whitelist, entry, method) => (
+    entry && whitelist.includes(entry) && method === 'GET'
 );
 
 /**
  *
+ * @param namespace
+ * @param whitelist
  * @returns {Function}
  */
-const middleware = (whitelist) => async (req, res, next) => {
-    const {method, params: {model}} = req;
+const factory = (namespace, whitelist) => {
+    const dir = resolve(process.cwd(), 'cache', namespace);
 
-    if (!validate(whitelist, model, method)) {
-        return next();
+    if (!existsSync(dir)) {
+        mkdirSync(dir);
     }
 
-    const file = resolve(process.cwd(), 'cache', `${model}.json`);
-    const db = await database(file);
+    /**
+     *
+     */
+    return async (req, res, next) => {
+        const {method, params: {model}} = req;
 
-    let data = db.get('data');
+        if (!validate(whitelist, model, method)) {
+            return next();
+        }
 
-    if (!data) {
-        data = await getEntries({content_type: model});
+        const file = resolve(dir, `${model}.json`);
+        const {get, save, set} = await database(file);
 
-        db.set('data', data);
-        db.save();
-    }
+        let data = get('data');
 
-    res.locals.data = data;
+        if (!data) {
+            data = await getEntries({content_type: model});
 
-    next();
+            set('data', data);
+            save();
+        }
+
+        res.locals.data = data;
+
+        next();
+    };
 };
 
 /**
@@ -45,4 +59,4 @@ const middleware = (whitelist) => async (req, res, next) => {
  * Date: 22.10.2018
  * Time: 21:04
  */
-module.exports = middleware;
+module.exports = factory;

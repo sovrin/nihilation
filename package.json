@@ -30,7 +30,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "set DEBUG=N* && node --experimental-modules server.js"
+    "dev": "set DEBUG=N* && node server.js"
   },
   "keywords": [],
   "author": "",
