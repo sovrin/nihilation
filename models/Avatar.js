@@ -7,78 +7,80 @@ const Model = require('../lib/Model');
  */
 class Avatar extends Model {
 
-    /**
-     *
-     * @param description
-     * @param file
-     * @param title
-     */
-    constructor(description, file, title) {
-        super();
+	static name = 'avatar';
 
-        this._description = description;
-        this._file = file;
-        this._title = title;
-    }
+	/**
+	 *
+	 * @param description
+	 * @param file
+	 * @param title
+	 */
+	constructor(description, file, title) {
+		super();
 
-    /**
-     *
-     * @param description
-     * @param file
-     * @param title
-     * @returns {Avatar}
-     */
-    static create({description, file, title}) {
-        return new Avatar(description, file, title);
-    }
+		this._description = description;
+		this._file = file;
+		this._title = title;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get description() {
-        return this._description;
-    }
+	/**
+	 *
+	 * @param description
+	 * @param file
+	 * @param title
+	 * @returns {Avatar}
+	 */
+	static create({description, file, title}) {
+		return new Avatar(description, file, title);
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set description(value) {
-        this._description = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get description() {
+		return this._description;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get file() {
-        return this._file;
-    }
+	/**
+	 *
+	 * @param value
+	 */
+	set description(value) {
+		this._description = value;
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set file(value) {
-        this._file = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get file() {
+		return this._file;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get title() {
-        return this._title;
-    }
+	/**
+	 *
+	 * @param value
+	 */
+	set file(value) {
+		this._file = value;
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set title(value) {
-        this._title = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get title() {
+		return this._title;
+	}
+
+	/**
+	 *
+	 * @param value
+	 */
+	set title(value) {
+		this._title = value;
+	}
 }
 
 module.exports = Avatar;

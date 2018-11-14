@@ -1,4 +1,6 @@
 import React from 'react';
+import Navigation from './Navigation';
+import Social from './Social';
 
 /**
  * User: Oleg Kamlowski <n@sovrin.de>
@@ -6,7 +8,8 @@ import React from 'react';
  * Time: 20:31
  */
 export default () => (
-    <header>
-        header
-    </header>
+	<header>
+		<Social/>
+		<Navigation/>
+	</header>
 );

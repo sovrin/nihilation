@@ -1,6 +1,6 @@
 import React from 'react';
-
 import Head from 'next/head';
+import {META} from 'config';
 
 /**
  * User: Oleg Kamlowski <n@sovrin.de>
@@ -8,10 +8,18 @@ import Head from 'next/head';
  * Time: 20:31
  */
 export default () => (
-    <div>
-        <Head>
-            <meta name="viewport" content="width=device-width, initial-scale=1"/>
-            <meta charSet="utf-8"/>
-        </Head>
-    </div>
+	<Head>
+		<meta charSet="utf-8"/>
+		<meta name="description" content=""/>
+		<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport"/>
+
+		<meta property="og:site_name" content={META.SITE}/>
+		<meta property="og:image" content={META.IMAGE}/>
+		<meta property="og:description" content={META.DESCRIPTION}/>
+		<meta property="og:url" content={META.URL}/>
+		<meta property="og:type" content={META.TYPE}/>
+
+		<link rel="shortcut icon" href="/static/images/favicon.png"/>
+		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lora"/>
+	</Head>
 );

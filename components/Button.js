@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
-    color: var(--color-red);
-    font-size: 50px;
+	color: var(--color-red);
+	font-size: 50px;
 `;
 
 /**

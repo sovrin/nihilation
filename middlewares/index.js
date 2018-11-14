@@ -1,3 +1,3 @@
 module.exports = {
-    cacheable: require('./cacheable'),
+	cacheable: require('./cacheable'),
 };

@@ -8,97 +8,99 @@ const Avatar = require('./Avatar');
  */
 class Member extends Model {
 
-    /**
-     *
-     * @param avatar
-     * @param name
-     * @param position
-     * @param role
-     */
-    constructor(avatar, name, position, role) {
-        super();
+	static name = 'member';
 
-        this._avatar = (avatar.fields) ? Avatar.create(avatar.fields) : avatar;
-        this._name = name;
-        this._position = position;
-        this._role = role;
-    }
+	/**
+	 *
+	 * @param avatar
+	 * @param name
+	 * @param position
+	 * @param role
+	 */
+	constructor(avatar, name, position, role) {
+		super();
 
-    /**
-     *
-     * @param avatar
-     * @param name
-     * @param position
-     * @param role
-     * @returns {Member}
-     */
-    static create({avatar, name, position, role}) {
-        return new Member(avatar, name, position, role);
-    }
+		this._avatar = (avatar.fields) ? Avatar.create(avatar.fields) : avatar;
+		this._name = name;
+		this._position = position;
+		this._role = role;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get avatar() {
-        return this._avatar;
-    }
+	/**
+	 *
+	 * @param avatar
+	 * @param name
+	 * @param position
+	 * @param role
+	 * @returns {Member}
+	 */
+	static create({avatar, name, position, role}) {
+		return new Member(avatar, name, position, role);
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set avatar(value) {
-        this._avatar = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get avatar() {
+		return this._avatar;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get name() {
-        return this._name;
-    }
+	/**
+	 *
+	 * @param value
+	 */
+	set avatar(value) {
+		this._avatar = value;
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set name(value) {
-        this._name = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get name() {
+		return this._name;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get position() {
-        return this._position;
-    }
+	/**
+	 *
+	 * @param value
+	 */
+	set name(value) {
+		this._name = value;
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set position(value) {
-        this._position = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get position() {
+		return this._position;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get role() {
-        return this._role;
-    }
+	/**
+	 *
+	 * @param value
+	 */
+	set position(value) {
+		this._position = value;
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set role(value) {
-        this._role = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get role() {
+		return this._role;
+	}
+
+	/**
+	 *
+	 * @param value
+	 */
+	set role(value) {
+		this._role = value;
+	}
 }
 
 module.exports = Member;

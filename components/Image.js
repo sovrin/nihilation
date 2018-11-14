@@ -10,23 +10,23 @@ const src = require.context('../static/images', true);
  */
 export default class Image extends Component {
 
-    static propTypes = {
-        file: PropTypes.string.isRequired,
-    };
+	static propTypes = {
+		file: PropTypes.string.isRequired,
+	};
 
-    static File = {
-        N: 'n.svg',
-    };
+	static File = {
+		N: 'n.svg',
+	};
 
-    /**
-     *
-     * @returns {*}
-     */
-    render() {
-        const {file, className} = this.props;
+	/**
+	 *
+	 * @returns {*}
+	 */
+	render() {
+		const {file, className} = this.props;
 
-        return (
-            <img src={src(`./${file}`)} className={className}/>
-        );
-    }
+		return (
+			<img src={src(`./${file}`)} className={className}/>
+		);
+	}
 }

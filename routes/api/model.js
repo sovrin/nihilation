@@ -9,22 +9,22 @@ const cache = cacheable('models', Object.keys(Models));
  * Time: 21:13
  */
 module.exports = [
-    cache,
-    (req, res, next) => {
-        const {params: {id}} = req;
-        let {locals: {data}} = res;
+	cache,
+	(req, res, next) => {
+		const {params: {id}} = req;
+		let {locals: {data}} = res;
 
-        if (!data) {
-            data = [];
-        }
+		if (!data) {
+			data = [];
+		}
 
-        if (id) {
-            data = data.filter(({sys}) => (
-                sys.id === id
-            ));
-        }
+		if (id) {
+			data = data.filter(({sys}) => (
+				sys.id === id
+			));
+		}
 
-        res.json(data);
-        next();
-    },
+		res.json(data);
+		next();
+	},
 ];

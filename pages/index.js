@@ -1,57 +1,42 @@
 import React, {Component} from 'react';
-import Button from '../components/Button';
-import Page from '../layouts/Main';
-import unfetch from 'isomorphic-unfetch'
+import connect from 'components/Connected';
+import Page from 'layouts/Main';
+import Model from 'models/Member';
+import Band from './band';
+import Home from './home';
 
 /**
  * User: Oleg Kamlowski <n@sovrin.de>
  * Date: 10.10.2018
  * Time: 21:42
  */
-export default class Index extends Component {
+class Index extends Component {
 
-    /**
-     *
-     * @returns {Promise<{data: any}>}
-     */
-    static async getInitialProps({req}) {
-        const models = ['member', 'band', 'news', 'event'];
-        const state = {};
+	static propTypes = {
 
-        for (const model of models) {
-            const endpoint = [process.env.API_ENDPOINT, model].join('/');
-            const res = await unfetch(endpoint);
+	};
 
-            state[model] = await res.json();
-        }
+	static defaultProps = {
 
-        console.info(state);
+	};
 
-        return state;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	render() {
+		const {band, data} = this.props;
 
-    /**
-     *
-     * @param props
-     */
-    constructor(props) {
-        super(props);
+		console.info(this.props);
 
-        console.info(this.state);
-    }
-
-    /**
-     *
-     * @returns {*}
-     */
-    render() {
-        const {data} = this.props;
-
-        return (
-            <Page>
-                <Button>test</Button>
-                <div className="test">{JSON.stringify(data)}</div>
-            </Page>
-        );
-    }
+		return (
+			<Page>
+				<Home>test</Home>
+				<Band>test</Band>
+				<div className="test">{JSON.stringify(this.props)}</div>
+			</Page>
+		);
+	}
 }
+
+export default connect(Index, Model);

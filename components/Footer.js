@@ -6,7 +6,7 @@ import React from 'react';
  * Time: 20:31
  */
 export default () => (
-    <div className="footer">
-        footer
-    </div>
+	<div className="footer">
+		footer
+	</div>
 );

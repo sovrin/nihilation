@@ -39,18 +39,18 @@ const save = async (path, store) => write(path, JSON.stringify(store));
  * @returns {Promise<*>}
  */
 const load = async (path) => {
-    let store;
+	let store;
 
-    try {
-        await exists(path, constants.F_OK);
-        store = require(path);
-    }
-    catch (e) {
-        await write(path, JSON.stringify({}));
-        store = {};
-    }
+	try {
+		await exists(path, constants.F_OK);
+		store = require(path);
+	}
+	catch (e) {
+		await write(path, JSON.stringify({}));
+		store = {};
+	}
 
-    return store;
+	return store;
 };
 
 /**
@@ -62,12 +62,12 @@ const load = async (path) => {
  * @returns {Promise<{get: (function(*): *), set: (function(*, *=): *), del: (function(*): boolean), save: (function(): function(*=): *)}>}
  */
 module.exports = async (path) => {
-    const store = await load(path);
+	const store = await load(path);
 
-    return {
-        get: get(store),
-        set: set(store),
-        del: del(store),
-        save: () => save(path, store),
-    };
+	return {
+		get: get(store),
+		set: set(store),
+		del: del(store),
+		save: () => save(path, store),
+	};
 };

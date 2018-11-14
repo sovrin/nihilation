@@ -10,7 +10,7 @@ const {database, contentful: {getEntries}} = require('../services');
  * @returns {boolean}
  */
 const validate = (whitelist, entry, method) => (
-    entry && whitelist.includes(entry) && method === 'GET'
+	entry && whitelist.includes(entry) && method === 'GET'
 );
 
 /**
@@ -20,38 +20,38 @@ const validate = (whitelist, entry, method) => (
  * @returns {Function}
  */
 const factory = (namespace, whitelist) => {
-    const dir = resolve(process.cwd(), 'cache', namespace);
+	const dir = resolve(process.cwd(), 'cache', namespace);
 
-    if (!existsSync(dir)) {
-        mkdirSync(dir);
-    }
+	if (!existsSync(dir)) {
+		mkdirSync(dir);
+	}
 
-    /**
-     *
-     */
-    return async (req, res, next) => {
-        const {method, params: {model}} = req;
+	/**
+	 *
+	 */
+	return async (req, res, next) => {
+		const {method, params: {model}} = req;
 
-        if (!validate(whitelist, model, method)) {
-            return next();
-        }
+		if (!validate(whitelist, model, method)) {
+			return next();
+		}
 
-        const file = resolve(dir, `${model}.json`);
-        const {get, save, set} = await database(file);
+		const file = resolve(dir, `${model}.json`);
+		const {get, save, set} = await database(file);
 
-        let data = get('data');
+		let data = get('data');
 
-        if (!data) {
-            data = await getEntries({content_type: model});
+		if (!data) {
+			data = await getEntries({content_type: model});
 
-            set('data', data);
-            save();
-        }
+			set('data', data);
+			save();
+		}
 
-        res.locals.data = data;
+		res.locals.data = data;
 
-        next();
-    };
+		next();
+	};
 };
 
 /**

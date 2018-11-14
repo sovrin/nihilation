@@ -5,20 +5,26 @@
 const express = require('express');
 const next = require('next');
 const debug = require('debug');
-const dotenv = require('dotenv');
+const compression = require('compression');
+const {config: parseEnv} = require('dotenv');
+const {PORT} = require('./config');
 
-dotenv.config();
+parseEnv();
 const d = debug('N');
-const port = process.env.PORT;
+const port = PORT || process.env.PORT;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({dev});
 const handle = app.getRequestHandler();
+
+console.info(port);
 
 app
     .prepare()
     .then(() => {
         const server = express();
+        server.use(compression());
         server.use(require('./routes'));
+        server.use('/static', express.static('static'));
 
         server.get('*', (req, res) => handle(req, res));
 

@@ -1,8 +1,8 @@
 const {createClient} = require('contentful');
 
 const client = createClient({
-    space: process.env.CMS_SPACE,
-    accessToken: process.env.CMS_TOKEN,
+	space: process.env.CMS_SPACE,
+	accessToken: process.env.CMS_TOKEN,
 });
 
 /**
@@ -11,9 +11,9 @@ const client = createClient({
  * @returns {Promise<Array<Entry<any>> | never>}
  */
 const getEntries = ({content_type}) => (
-    client
-        .getEntries({content_type})
-        .then((response => response.items))
+	client
+		.getEntries({content_type})
+		.then((response => response.items))
 );
 
 /**
@@ -22,5 +22,5 @@ const getEntries = ({content_type}) => (
  * Time: 00:04
  */
 module.exports = {
-    getEntries,
+	getEntries,
 };

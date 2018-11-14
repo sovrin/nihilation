@@ -7,59 +7,61 @@ const Model = require('../lib/Model');
  */
 class Band extends Model {
 
-    /**
-     *
-     * @param about
-     * @param copyright
-     */
-    constructor(about, copyright) {
-        super();
+	static name = 'band';
 
-        this._about = about;
-        this._copyright = copyright;
-    }
+	/**
+	 *
+	 * @param about
+	 * @param copyright
+	 */
+	constructor(about, copyright) {
+		super();
 
-    /**
-     *
-     * @param about
-     * @param copyright
-     * @returns {Band}
-     */
-    static create({about, copyright}) {
-        return new Band(about, copyright);
-    }
+		this._about = about;
+		this._copyright = copyright;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get about() {
-        return this._about;
-    }
+	/**
+	 *
+	 * @param about
+	 * @param copyright
+	 * @returns {Band}
+	 */
+	static create({about, copyright}) {
+		return new Band(about, copyright);
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set about(value) {
-        this._about = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get about() {
+		return this._about;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get copyright() {
-        return this._copyright;
-    }
+	/**
+	 *
+	 * @param value
+	 */
+	set about(value) {
+		this._about = value;
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set copyright(value) {
-        this._copyright = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get copyright() {
+		return this._copyright;
+	}
+
+	/**
+	 *
+	 * @param value
+	 */
+	set copyright(value) {
+		this._copyright = value;
+	}
 }
 
 module.exports = Band;

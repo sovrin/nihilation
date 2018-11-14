@@ -8,97 +8,99 @@ const Location = require('./Location');
  */
 class Event extends Model {
 
-    /**
-     *
-     * @param date
-     * @param link
-     * @param location
-     * @param name
-     */
-    constructor(date, link, location, name) {
-        super();
+	static name = 'event';
 
-        this._date = date;
-        this._link = link;
-        this._location = (location.fields) ? Location.create(location.fields) : location;
-        this._name = name;
-    }
+	/**
+	 *
+	 * @param date
+	 * @param link
+	 * @param location
+	 * @param name
+	 */
+	constructor(date, link, location, name) {
+		super();
 
-    /**
-     *
-     * @param date
-     * @param link
-     * @param location
-     * @param name
-     * @returns {Event}
-     */
-    static create({date, link, location, name}) {
-        return new Event(date, link, location, name);
-    }
+		this._date = date;
+		this._link = link;
+		this._location = (location.fields) ? Location.create(location.fields) : location;
+		this._name = name;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get date() {
-        return this._date;
-    }
+	/**
+	 *
+	 * @param date
+	 * @param link
+	 * @param location
+	 * @param name
+	 * @returns {Event}
+	 */
+	static create({date, link, location, name}) {
+		return new Event(date, link, location, name);
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set date(value) {
-        this._date = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get date() {
+		return this._date;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get link() {
-        return this._link;
-    }
+	/**
+	 *
+	 * @param value
+	 */
+	set date(value) {
+		this._date = value;
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set link(value) {
-        this._link = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get link() {
+		return this._link;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get location() {
-        return this._location;
-    }
+	/**
+	 *
+	 * @param value
+	 */
+	set link(value) {
+		this._link = value;
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set location(value) {
-        this._location = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get location() {
+		return this._location;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get name() {
-        return this._name;
-    }
+	/**
+	 *
+	 * @param value
+	 */
+	set location(value) {
+		this._location = value;
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set name(value) {
-        this._name = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get name() {
+		return this._name;
+	}
+
+	/**
+	 *
+	 * @param value
+	 */
+	set name(value) {
+		this._name = value;
+	}
 }
 
 module.exports = Event;

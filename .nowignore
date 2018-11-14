@@ -1,0 +1,7 @@
+.idea
+.gitignore
+.next
+.git
+
+node_modules
+package-lock.json

@@ -7,59 +7,61 @@ const Model = require('../lib/Model');
  */
 class File extends Model {
 
-    /**
-     *
-     * @param filename
-     * @param url
-     */
-    constructor(filename, url) {
-        super();
+	static name = 'file';
 
-        this._filename = filename;
-        this._url = url;
-    }
+	/**
+	 *
+	 * @param filename
+	 * @param url
+	 */
+	constructor(filename, url) {
+		super();
 
-    /**
-     *
-     * @param filename
-     * @param url
-     * @returns {File}
-     */
-    static create({filename, url}) {
-        return new File(filename, url);
-    }
+		this._filename = filename;
+		this._url = url;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get filename() {
-        return this._filename;
-    }
+	/**
+	 *
+	 * @param filename
+	 * @param url
+	 * @returns {File}
+	 */
+	static create({filename, url}) {
+		return new File(filename, url);
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set filename(value) {
-        this._filename = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get filename() {
+		return this._filename;
+	}
 
-    /**
-     *
-     * @returns {*}
-     */
-    get url() {
-        return this._url;
-    }
+	/**
+	 *
+	 * @param value
+	 */
+	set filename(value) {
+		this._filename = value;
+	}
 
-    /**
-     *
-     * @param value
-     */
-    set url(value) {
-        this._url = value;
-    }
+	/**
+	 *
+	 * @returns {*}
+	 */
+	get url() {
+		return this._url;
+	}
+
+	/**
+	 *
+	 * @param value
+	 */
+	set url(value) {
+		this._url = value;
+	}
 }
 
 module.exports = File;

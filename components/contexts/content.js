@@ -1,6 +1,6 @@
 import React, {Component, createContext} from 'react';
 
-export const Context = createContext();
+export const Context = createContext({});
 
 /**
  * User: Oleg Kamlowski <n@sovrin.de>
@@ -9,24 +9,22 @@ export const Context = createContext();
  */
 export class Provider extends Component {
 
-    state = {
-        test: 1
-    };
+	state = {
+		test: 1,
+	};
 
+	/**
+	 *
+	 * @returns {*}
+	 */
+	render() {
+		const {state, props} = this;
+		const {children} = props;
 
-
-    /**
-     *
-     * @returns {*}
-     */
-    render() {
-        const {state, props} = this;
-        const {children} = props;
-
-        return (
-            <Context value={state}>
-                {children}
-            </Context>
-        );
-    }
+		return (
+			<Context value={state}>
+				{children}
+			</Context>
+		);
+	}
 }
