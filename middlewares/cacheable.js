@@ -4,22 +4,10 @@ const {database, contentful: {getEntries}} = require('../services');
 
 /**
  *
- * @param whitelist
- * @param entry
- * @param method
- * @returns {boolean}
- */
-const validate = (whitelist, entry, method) => (
-	entry && whitelist.includes(entry) && method === 'GET'
-);
-
-/**
- *
  * @param namespace
- * @param whitelist
  * @returns {Function}
  */
-const factory = (namespace, whitelist) => {
+const factory = (namespace) => {
 	const dir = resolve(process.cwd(), 'cache', namespace);
 
 	if (!existsSync(dir)) {
@@ -30,11 +18,7 @@ const factory = (namespace, whitelist) => {
 	 *
 	 */
 	return async (req, res, next) => {
-		const {method, params: {model}} = req;
-
-		if (!validate(whitelist, model, method)) {
-			return next();
-		}
+		const {params: {model}} = req;
 
 		const file = resolve(dir, `${model}.json`);
 		const {get, save, set} = await database(file);
@@ -53,6 +37,12 @@ const factory = (namespace, whitelist) => {
 		next();
 	};
 };
+
+//todo split from entity fetch and cache
+// pre tries to load cache
+// post saves data to cache
+const pre = () => {};
+const post = () => {};
 
 /**
  * User: Oleg Kamlowski <n@sovrin.de>

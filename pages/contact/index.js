@@ -3,10 +3,10 @@ import Section from '../../components/Section';
 
 /**
  * User: Oleg Kamlowski <n@sovrin.de>
- * Date: 14.11.2018
- * Time: 21:29
+ * Date: 19.12.2018
+ * Time: 22:51
  */
-export default class Band extends Component {
+export default class Contact extends Component {
 
 	/**
 	 *
@@ -15,7 +15,7 @@ export default class Band extends Component {
 	render() {
 		return (
 			<Section>
-				band
+				oof
 			</Section>
 		);
 	}

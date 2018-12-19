@@ -5,6 +5,7 @@ import Meta from 'components/Meta';
 
 import 'normalize.css';
 import 'styles/style.less';
+
 /**
  * User: Oleg Kamlowski <n@sovrin.de>
  * Date: 10.10.2018
